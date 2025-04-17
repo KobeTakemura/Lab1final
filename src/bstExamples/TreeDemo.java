@@ -62,7 +62,11 @@ inserts a node into the tree
         }
     }
     public void postOrderTraversal(Node root){
-//implement in here
+        if (root != null) {
+            postOrderTraversal(root.left);
+            postOrderTraversal(root.right);
+            System.out.print(root.value + " ");
+        }
     }
     /*
     a method to find the node in the tree
