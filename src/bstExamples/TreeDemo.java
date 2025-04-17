@@ -89,7 +89,10 @@ inserts a node into the tree
     with a smallest key
     */
     public int getMin(Node root){
-//implement in here
+        while (root.left != null) {
+            root = root.left;
+        }
+        return root.value;
     }
     /*
     a method to find the node in the tree
