@@ -1,5 +1,11 @@
 package bstExamples;
 
+/**
+ * Node class to initialize a node
+ * Left and right children are innitially set to null
+ *
+ * @param value  value of the node
+ */
 class Node{
     int value;
     Node left, right;
@@ -11,12 +17,12 @@ class Node{
 }
 class BinarySearchTree{
     Node root;
-    /*
-    recursive insert method
-    */
-/*
-inserts a node into the tree
-*/
+
+    /**
+     * Inserts a value into the Binary Search Tree
+     * First value becomes the root
+     * @param value The value inserted into tree
+     */
     public void insert(int value){
 //tree is empty
         if(root == null){
@@ -43,10 +49,12 @@ inserts a node into the tree
             }//closing while
         }//closing main if-else
     }
-    /*
-    pre-order traversal
-    Prints the value of every node preorder
-    */
+    /**
+     * Method performs pre-order traversal
+     * Root → Left → Right
+     *
+     * @param root The root of the subtree
+     */
     public void preOrderTraversal(Node root){
         if (root != null) {
             System.out.print(root.value + " ");
@@ -54,6 +62,12 @@ inserts a node into the tree
             preOrderTraversal(root.right);
         }
     }
+    /**
+     * Method performes in-order traversal
+     * Left → Root → Right
+     *
+     * @param root The root of the subtree
+     */
     public void inOrderTraversal(Node root){
         if (root != null) {
             inOrderTraversal(root.left);
@@ -61,6 +75,12 @@ inserts a node into the tree
             inOrderTraversal(root.right);
         }
     }
+    /**
+     * Method performs post-order traversal
+     * Left → Right → Root.
+     *
+     * @param root The root of the subtree
+     */
     public void postOrderTraversal(Node root){
         if (root != null) {
             postOrderTraversal(root.left);
@@ -68,10 +88,13 @@ inserts a node into the tree
             System.out.print(root.value + " ");
         }
     }
-    /*
-    a method to find the node in the tree
-    with a specific value
-    */
+    /**
+     * Method finds  node with the specified key
+     *
+     * @param root The root of the subtree
+     * @param key The value being searched
+     * @return True if the value is found, false if not
+     */
     public boolean find(Node root, int key){
         if (root == null) {
             return false;
@@ -84,29 +107,37 @@ inserts a node into the tree
             return find(root.right, key);
         }
     }
-    /*
-    a method to find the node in the tree
-    with a smallest key
-    */
+    /**
+     * Finds the minimum value
+     *
+     * @param root The root of the subtree
+     * @return The smallest value
+     */
     public int getMin(Node root){
         while (root.left != null) {
             root = root.left;
         }
         return root.value;
     }
-    /*
-    a method to find the node in the tree
-    with a largest key
-    */
+    /**
+     * Finds the maximum value
+     *
+     * @param root The root of the subtree
+     * @return The largest value
+     */
     public int getMax(Node root){
         while (root.right != null) {
             root = root.right;
         }
         return root.value;
     }
-    /*
-    this method will not compile until getMax
-    is implemented
+
+    /**
+     * Deletes a specified node, replaces node after deletion
+    *
+    * @param root The root of the subtree
+    * @param key The value to delete
+    * @return The new root
     */
     public Node delete(Node root, int key){
         if(root == null){
@@ -135,6 +166,10 @@ inserts a node into the tree
         return root;
     }
 }
+/**
+ * A  demo class to test operations
+ * Inserts values into the tree and prints the in-order traversal
+ */
 public class TreeDemo{
     public static void main(String[] args){
         BinarySearchTree t1 = new BinarySearchTree();
