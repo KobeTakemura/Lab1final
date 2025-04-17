@@ -99,7 +99,10 @@ inserts a node into the tree
     with a largest key
     */
     public int getMax(Node root){
-//implement in here
+        while (root.right != null) {
+            root = root.right;
+        }
+        return root.value;
     }
     /*
     this method will not compile until getMax
